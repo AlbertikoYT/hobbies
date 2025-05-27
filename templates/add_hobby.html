@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar actividad</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>¿Qué actividad realiza esta persona?</h1>
+        <form action="/add_membership" method="POST">
+
+            <label>¿Quién la realiza?</label>
+            <select name="member_id" required>
+                {% for m in members %}
+                    <option value="{{ m._id }}">{{ m.first_name }} {{ m.last_name }}</option>
+                {% endfor %}
+            </select>
+
+            <label>¿Qué hobby realiza?</label>
+            <select name="hobby_code" required>
+                {% for h in hobbies %}
+                    <option value="{{ h.hobby_code }}">{{ h.hobby_description }}</option>
+                {% endfor %}
+            </select>
+
+            <label>¿Qué porcentaje de su tiempo dedica a esta actividad?</label>
+            <input type="number" name="percentage" min="0" max="100" placeholder="Ej: 20" required>
+
+            <label>¿Qué tan bien realiza esta actividad?</label>
+            <select name="level_of_ability" required>
+                <option value="Principiante">Principiante</option>
+                <option value="Intermedio">Intermedio</option>
+                <option value="Avanzado">Avanzado</option>
+                <option value="Experto">Experto</option>
+            </select>
+
+            <button type="submit">Guardar actividad</button>
+        </form>
+    </div>
+</body>
+</html>

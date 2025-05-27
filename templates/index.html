@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Actividades registradas</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Actividades de las personas</h1>
+        <a href="/add_membership" class="btn">Registrar nueva actividad</a>
+
+        <div class="listado">
+            <ul>
+                {% for m in memberships %}
+                    <li>
+                        {{ members[m.member_id] }} se dedica el {{ m.percentage }}% a {{ hobbies[m.hobby_code] | lower }} y su nivel de habilidad es {{ m.level_of_ability | lower }}.
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
